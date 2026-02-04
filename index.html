@@ -58,7 +58,6 @@
             z-index: 1000;
         }
 
-        /* MORE RED LIGHT BACKGROUND */
         body::after {
             content: '';
             position: fixed;
@@ -82,6 +81,9 @@
             padding: 0 24px;
         }
 
+        /* ═══════════════════════════════════════════════════════════════
+           HERO SECTION
+        ═══════════════════════════════════════════════════════════════ */
         .hero {
             min-height: 100vh;
             min-height: 100dvh;
@@ -175,6 +177,9 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* ═══════════════════════════════════════════════════════════════
+           VSL VIDEO CONTAINER
+        ═══════════════════════════════════════════════════════════════ */
         .vsl-container {
             width: 100%;
             max-width: 900px;
@@ -221,26 +226,57 @@
             border: none;
         }
 
-        .testimonials {
+        /* ═══════════════════════════════════════════════════════════════
+           VIDEO CAPTION (Texte sous la vidéo)
+        ═══════════════════════════════════════════════════════════════ */
+        .video-caption {
+            max-width: 800px;
+            margin: 32px auto 0;
+            padding: 20px 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .video-caption p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .video-caption strong {
+            color: var(--text-primary);
+        }
+
+        .video-caption .highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           PROPOSITION DE VALEUR SECTION
+        ═══════════════════════════════════════════════════════════════ */
+        .value-prop {
             padding: 120px 24px;
             background: var(--bg-secondary);
             position: relative;
         }
 
-        .testimonials::before {
+        .value-prop::before {
             content: '';
             position: absolute;
             top: 0;
-            right: 0;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(230, 57, 70, 0.06) 0%, transparent 70%);
-            pointer-events: none;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 80px;
+            margin-bottom: 60px;
         }
 
         .section-label {
@@ -258,6 +294,164 @@
             font-size: clamp(26px, 5vw, 48px);
             font-weight: 700;
             line-height: 1.2;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           PILIERS INTERACTIFS
+        ═══════════════════════════════════════════════════════════════ */
+        .pillars-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .pillars-icons {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .pillar-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 20px;
+            border-radius: 16px;
+            background: transparent;
+            border: 2px solid transparent;
+        }
+
+        .pillar-icon:hover {
+            background: rgba(230, 57, 70, 0.05);
+        }
+
+        .pillar-icon.active {
+            background: rgba(230, 57, 70, 0.1);
+            border-color: var(--accent);
+        }
+
+        .pillar-icon .icon {
+            width: 80px;
+            height: 80px;
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            transition: all 0.3s ease;
+        }
+
+        .pillar-icon:hover .icon {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px -10px rgba(230, 57, 70, 0.3);
+        }
+
+        .pillar-icon.active .icon {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px -10px rgba(230, 57, 70, 0.4);
+        }
+
+        .pillar-icon .icon-label {
+            font-family: 'Syne', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-align: center;
+            transition: color 0.3s ease;
+        }
+
+        .pillar-icon:hover .icon-label,
+        .pillar-icon.active .icon-label {
+            color: var(--text-primary);
+        }
+
+        /* Contenu déplié */
+        .pillar-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .pillar-content.active {
+            max-height: 400px;
+            opacity: 1;
+        }
+
+        .pillar-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pillar-card::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: var(--gradient-1);
+        }
+
+        .pillar-card-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .pillar-card-icon {
+            font-size: 32px;
+        }
+
+        .pillar-card-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .pillar-card-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .pillar-card-text strong {
+            color: var(--accent);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           TESTIMONIALS SECTION
+        ═══════════════════════════════════════════════════════════════ */
+        .testimonials {
+            padding: 120px 24px;
+            background: var(--bg-primary);
+            position: relative;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(230, 57, 70, 0.06) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .testimonials-grid {
@@ -439,9 +633,12 @@
             fill: currentColor;
         }
 
+        /* ═══════════════════════════════════════════════════════════════
+           FOOTER
+        ═══════════════════════════════════════════════════════════════ */
         .footer {
             padding: 80px 24px;
-            background: var(--bg-primary);
+            background: var(--bg-secondary);
             text-align: center;
             position: relative;
         }
@@ -513,6 +710,9 @@
 
         .footer-copyright span { color: var(--accent); }
 
+        /* ═══════════════════════════════════════════════════════════════
+           ANIMATIONS
+        ═══════════════════════════════════════════════════════════════ */
         .fade-in {
             opacity: 0;
             transform: translateY(40px);
@@ -524,9 +724,48 @@
             transform: translateY(0);
         }
 
+        /* ═══════════════════════════════════════════════════════════════
+           RESPONSIVE
+        ═══════════════════════════════════════════════════════════════ */
         @media (max-width: 768px) {
             .hero { padding: 60px 16px; }
             .hero::before { width: 300px; height: 300px; }
+            
+            .video-caption {
+                margin: 24px 16px 0;
+                padding: 16px 20px;
+            }
+            
+            .video-caption p { font-size: 14px; }
+            
+            .value-prop { padding: 80px 16px; }
+            
+            .pillars-icons {
+                gap: 16px;
+            }
+            
+            .pillar-icon {
+                padding: 12px;
+            }
+            
+            .pillar-icon .icon {
+                width: 60px;
+                height: 60px;
+                font-size: 28px;
+                border-radius: 16px;
+            }
+            
+            .pillar-icon .icon-label {
+                font-size: 11px;
+            }
+            
+            .pillar-card {
+                padding: 24px 20px;
+            }
+            
+            .pillar-card-title { font-size: 20px; }
+            .pillar-card-text { font-size: 14px; }
+            
             .testimonials { padding: 60px 12px; }
             .testimonials .container { padding: 0; }
             .testimonial-card {
@@ -548,6 +787,27 @@
 
         @media (max-width: 480px) {
             .hero { padding: 48px 12px; }
+            
+            .pillars-icons {
+                gap: 8px;
+            }
+            
+            .pillar-icon {
+                padding: 8px;
+            }
+            
+            .pillar-icon .icon {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+                border-radius: 12px;
+            }
+            
+            .pillar-icon .icon-label {
+                font-size: 10px;
+                max-width: 80px;
+            }
+            
             .testimonials { padding: 48px 8px; }
             .testimonial-card { padding: 12px; }
             .person-photo { width: 60px; height: 60px; }
@@ -556,27 +816,111 @@
 </head>
 <body>
 
+    <!-- ═══════════════════════════════════════════════════════════════
+         HERO SECTION
+    ═══════════════════════════════════════════════════════════════ -->
     <section class="hero">
         <div class="hero-badge">Nathan Orrye</div>
-        <h1 class="hero-title">Le marketeur qui exécute ce que les autres théorisent.</h1>
+        <h1 class="hero-title">Marketing, Sales <span class="accent">&</span> Growth</h1>
         <p class="hero-subtitle">
-           Stratégie digitale. Création de contenu. Automatisation IA. Une seule personne.
+            J'accompagne des entrepreneurs dans le scaling de leur business en ligne. 
+            Mon expertise couvre l'acquisition (paid & organique), la conversion, 
+            les systèmes de vente, le closing, la délivrabilité et l'optimisation des process.
         </p>
+        
         <div class="vsl-container">
             <div class="vsl-wrapper">
                 <div class="video-aspect">
                     <iframe src="https://www.youtube.com/embed/axJfwlPhsMw?rel=0&modestbranding=1" allowfullscreen></iframe>
                 </div>
             </div>
+            
+            <!-- Texte sous la vidéo -->
+            <div class="video-caption">
+                <p><strong>Pas le temps de regarder ?</strong> Voici l'essentiel : je suis un <span class="highlight">marketeur hybride</span> qui passe de la stratégie à l'exécution sans friction. Là où d'autres délèguent, <span class="highlight">je livre</span>.</p>
+            </div>
         </div>
     </section>
 
+    <!-- ═══════════════════════════════════════════════════════════════
+         PROPOSITION DE VALEUR
+    ═══════════════════════════════════════════════════════════════ -->
+    <section class="value-prop">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label">Pourquoi moi</span>
+                <h2 class="section-title">Ce que vous obtenez en m'intégrant à votre équipe</h2>
+            </div>
+
+            <div class="pillars-container fade-in">
+                <!-- 3 Icônes cliquables -->
+                <div class="pillars-icons">
+                    <div class="pillar-icon active" data-pillar="1">
+                        <div class="icon">🎯</div>
+                        <span class="icon-label">Stratégie & Acquisition</span>
+                    </div>
+                    <div class="pillar-icon" data-pillar="2">
+                        <div class="icon">🎨</div>
+                        <span class="icon-label">Création & Brand Content</span>
+                    </div>
+                    <div class="pillar-icon" data-pillar="3">
+                        <div class="icon">⚡</div>
+                        <span class="icon-label">Automatisation & IA</span>
+                    </div>
+                </div>
+
+                <!-- Contenu déplié - Pilier 1 -->
+                <div class="pillar-content active" data-content="1">
+                    <div class="pillar-card">
+                        <div class="pillar-card-header">
+                            <span class="pillar-card-icon">🎯</span>
+                            <h3 class="pillar-card-title">Stratégie & Acquisition</h3>
+                        </div>
+                        <p class="pillar-card-text">
+                            Plans d'action marketing, gestion de leads, funnels de conversion. J'ai piloté des campagnes pour des <strong>concessions automobiles</strong> et des <strong>infopreneurs</strong> — deux mondes, mêmes exigences de résultats.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Contenu déplié - Pilier 2 -->
+                <div class="pillar-content" data-content="2">
+                    <div class="pillar-card">
+                        <div class="pillar-card-header">
+                            <span class="pillar-card-icon">🎨</span>
+                            <h3 class="pillar-card-title">Création & Brand Content</h3>
+                        </div>
+                        <p class="pillar-card-text">
+                            Montage vidéo, design graphique, identité visuelle. <strong>Je ne brief pas un créatif, je suis le créatif.</strong> Suite Adobe, Canva, formats courts et longs — je produis ce que la stratégie demande.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Contenu déplié - Pilier 3 -->
+                <div class="pillar-content" data-content="3">
+                    <div class="pillar-card">
+                        <div class="pillar-card-header">
+                            <span class="pillar-card-icon">⚡</span>
+                            <h3 class="pillar-card-title">Automatisation & IA</h3>
+                        </div>
+                        <p class="pillar-card-text">
+                            Make.com, ChatGPT, outils de productivité IA. J'automatise les process répétitifs pour que l'équipe se concentre sur ce qui compte. <strong>C'est là que je fais gagner du temps (et de l'argent).</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         TESTIMONIALS SECTION
+    ═══════════════════════════════════════════════════════════════ -->
     <section class="testimonials">
         <div class="container">
             <div class="section-header">
                 <span class="section-label">Témoignages</span>
                 <h2 class="section-title">Ce qu'ils disent de moi</h2>
             </div>
+
             <div class="testimonials-grid">
                 <article class="testimonial-card fade-in">
                     <div class="testimonial-content">
@@ -591,37 +935,39 @@
                             <p class="person-role">Chargé de Webmarketing & E-Commerce - NISSAN</p>
                             <div class="person-contacts">
                                 <a href="https://www.linkedin.com/in/fran%C3%A7ois-lebreton/" class="contact-link" target="_blank"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
-                              <a href="contact@go-mep.com" class="contact-link" target="_blank"><svg viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg></a>
+                                <a href="mailto:contact@go-mep.com" class="contact-link" target="_blank"><svg viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg></a>
                             </div>
                         </div>
                     </div>
                 </article>
 
-                <article class="testimonial-card fade-in">
+                 <article class="testimonial-card fade-in">
                     <div class="testimonial-content">
                         <div class="testimonial-video">
-                          <iframe src="https://www.loom.com/embed/86b7cc22eb9d4b8b8531e0003acfdecd" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="width:100%;height:100%;border:none;border-radius:20px;"></iframe>
+                            <iframe src="https://www.youtube.com/embed/e795cl0C1aY" allowfullscreen></iframe>
                         </div>
                     </div>
                     <div class="testimonial-person">
-                        <div class="person-photo"><img src="alex.jpeg" alt="alex"></div>
+                        <div class="person-photo"><img src="francois.jpeg" alt="François LeBreton"></div>
                         <div class="person-info">
-                            <h3 class="person-name">Alexandre Le Labourier</h3>
-                            <p class="person-role">Fondateur & infopreneur - Smartlife Coaching</p>
+                            <h3 class="person-name">François LeBreton</h3>
+                            <p class="person-role">Chargé de Webmarketing & E-Commerce - NISSAN</p>
                             <div class="person-contacts">
-                                <a href="https://www.youtube.com/@smartlifecoaching" class="contact-link" target="_blank"><svg viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg></a>
-                                <a href="https://www.instagram.com/smartlife.coaching/" class="contact-link" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                                <a href="https://www.linkedin.com/in/fran%C3%A7ois-lebreton/" class="contact-link" target="_blank"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                                <a href="mailto:contact@go-mep.com" class="contact-link" target="_blank"><svg viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg></a>
                             </div>
                         </div>
                     </div>
                 </article>
-                 
-            
-               
+                
+              
             </div>
         </div>
     </section>
 
+    <!-- ═══════════════════════════════════════════════════════════════
+         FOOTER
+    ═══════════════════════════════════════════════════════════════ -->
     <footer class="footer">
         <h2 class="footer-title">Envie d'en savoir plus ?</h2>
         <p class="footer-subtitle">Retrouve-moi sur mes réseaux</p>
@@ -638,13 +984,35 @@
         <p class="footer-copyright">© 2025 <span>Nathan Orrye</span></p>
     </footer>
 
+    <!-- ═══════════════════════════════════════════════════════════════
+         SCRIPTS
+    ═══════════════════════════════════════════════════════════════ -->
     <script>
+        // Scroll animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('visible');
             });
         }, { threshold: 0.1 });
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Piliers interactifs
+        const pillarIcons = document.querySelectorAll('.pillar-icon');
+        const pillarContents = document.querySelectorAll('.pillar-content');
+
+        pillarIcons.forEach(icon => {
+            icon.addEventListener('click', () => {
+                const pillarId = icon.getAttribute('data-pillar');
+
+                // Retirer la classe active de tous les icônes et contenus
+                pillarIcons.forEach(i => i.classList.remove('active'));
+                pillarContents.forEach(c => c.classList.remove('active'));
+
+                // Ajouter la classe active à l'icône et au contenu cliqués
+                icon.classList.add('active');
+                document.querySelector(`.pillar-content[data-content="${pillarId}"]`).classList.add('active');
+            });
+        });
     </script>
 
 </body>
